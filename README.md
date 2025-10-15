@@ -167,16 +167,30 @@ You can import it into Postman to test all endpoints directly.
 
 ## 📸 Screenshots
 
-**
+### 🏠 Homepage and Product List
+![Homepage](Screenshots/homePage.png)
+
+### 🛍️ search
+![Search](Screenshots/search.png)
+
+### ➕ Add Product Page
+![Add Product](Screenshots/updateProduct.png)
+
+### Cart Page
+![Cart](Screenshots/Cart.png)
+
+### H2-  data base
+![DataBase](Screenshots/H2-database.png)
 
 ---
 
 ## 💡 Author
 
-👤 **Vishnu Vardhan**
+👤 **Vishnu Bachala**
 📧 *http://linkedin.com/in/vishnu-bachala*
-🧠 *Java | SQL | Spring Boot | React *
+🧠 *Java | SQL | Spring Boot | React | github*
 
 ---
+
 
 
