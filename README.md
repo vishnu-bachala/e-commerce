@@ -1,133 +1,182 @@
+# 🛒 E-Commerce Web Application
 
-```markdown
-# 🛍️ E-Commerce Application
-
-A simple **E-Commerce Web Application** developed using **Spring Boot**, **H2 Database**, and a **React frontend**.  
-This project provides basic product management features such as **Add**, **Update**, **Delete**, **Search**, and **View Cart**.
+A **full-stack e-commerce website** built with **Spring Boot (backend)** and **React (frontend)**.
+This project demonstrates how to create, update, delete, and search products with image uploads, using RESTful APIs and a responsive React-based UI.
 
 ---
 
 ## 🚀 Tech Stack
 
-### Backend
-- **Spring Boot** (REST API)
-- **Spring Data JPA**
-- **H2 Database** (file-based)
-- **Postman** (for API testing)
+### 🔹 Backend (Spring Boot)
 
-### Frontend
-- **React.js**
-- **HTML, CSS, JavaScript**
-- **Vite Build Tool**
+* Spring Boot 3.x
+* H2 Database (File-based storage)
+* Spring Data JPA
+* Maven
+* RESTful APIs with JSON responses
+
+### 🔹 Frontend (React)
+
+* React.js
+* Axios (for API integration)
+* Bootstrap 5
+* React Router
 
 ---
 
 ## ⚙️ Features
 
-✅ Add new products  
-✅ Update existing products  
-✅ Delete products  
-✅ Search for products by keyword  
-✅ View product list  
-✅ Integrated H2 database  
-✅ REST APIs for backend interaction
+✅ Add new products with images
+✅ Update and delete existing products
+✅ View all products dynamically
+✅ Search products by keyword or ID
+✅ Category filter functionality
+✅ Light/Dark mode toggle
+✅ RESTful API design
+✅ H2 database console for local debugging
 
 ---
 
-## 🗂️ Project Structure
+## 📁 Project Structure
 
 ```
-
-ecom-proj/
-├── src/
-│   ├── main/
-│   │   ├── java/com/vishnuu/ecom_proj/
-│   │   │   ├── controller/      # REST Controllers
-│   │   │   ├── model/           # Entity Classes
-│   │   │   ├── repo/            # JPA Repositories
-│   │   │   └── service/         # Business Logic Layer
-│   │   ├── resources/
-│   │   │   ├── static/          # React build files
-│   │   │   ├── templates/       # Thymeleaf templates (optional)
-│   │   │   ├── application.properties
-│   │   │   └── data1.sql        # Initial data (if any)
-│   └── test/                    # Test cases
-├── pom.xml                      # Maven configuration
-└── EcomProjApplication.java     # Main Spring Boot file
-
-````
-
----
-
-## ⚡ API Endpoints
-
-| Method | Endpoint | Description |
-|--------|-----------|-------------|
-| `GET` | `/products` | Get all products |
-| `GET` | `/products/search?keyword={keyword}` | Search for products |
-| `POST` | `/product` | Add new product |
-| `PUT` | `/product/{id}` | Update existing product |
-| `DELETE` | `/product/{id}` | Delete a product |
+e-commerce/
+│
+├── backend/
+│   ├── src/main/java/com/vishnu/ecom_proj/
+│   │   ├── controller/
+│   │   │   ├── ProductController.java
+│   │   │   └── WebController.java
+│   │   ├── model/
+│   │   ├── service/
+│   │   └── EcomProjApplication.java
+│   ├── src/main/resources/
+│   │   ├── application.properties
+│   │   └── static/ (contains built React files)
+│   └── target/
+│       └── ecom-proj-0.0.1-SNAPSHOT.jar
+│
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   ├── pages/
+    │   └── App.js
+    ├── public/
+    └── package.json
+```
 
 ---
 
-## 🧩 Database Configuration (H2)
+## 🧠 API Endpoints (Postman Collection: `ecom-proj`)
+
+| Method     | Endpoint                                 | Description                             |
+| ---------- | ---------------------------------------- | --------------------------------------- |
+| **GET**    | `/api/products`                          | Get all products                        |
+| **GET**    | `/api/product/{id}`                      | Get product by ID                       |
+| **POST**   | `/api/product`                           | Add new product (supports image upload) |
+| **PUT**    | `/api/product/{id}`                      | Update product details                  |
+| **DELETE** | `/api/product/{id}`                      | Delete product                          |
+| **GET**    | `/api/products/search?keyword={keyword}` | Search product by keyword               |
+
+> 🧩 Import `ecom-proj.postman_collection.json` into **Postman** to test APIs easily.
+
+---
+
+## 🛠️ Configuration
+
+**File:** `application.properties`
 
 ```properties
-spring.datasource.url=jdbc:h2:file:./data/ecomdb
-spring.datasource.driver-class-name=org.h2.Driver
-spring.datasource.username=sa
-spring.datasource.password=
-spring.jpa.hibernate.ddl-auto=update
+spring.application.name=ecom-proj
+spring.datasource.url=jdbc:h2:file:./data/ecomDB
+spring.datasource.username=mycart
+spring.datasource.password=123456
+spring.jpa.show-sql=true
 spring.h2.console.enabled=true
-````
+spring.jpa.hibernate.ddl-auto=update
+```
 
-Access H2 Console at:
-➡️ `http://localhost:8080/h2-console`
+To access the H2 console:
+🔗 [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
+**JDBC URL:** `jdbc:h2:file:./data/ecomDB`
+**Username:** `mycart`
+**Password:** `123456`
 
 ---
 
-## ▶️ How to Run
+## 🧰 How to Run
 
-### 🧱 Backend
-
-1. Open project in **IntelliJ** or **VS Code**.
-2. Run `EcomProjApplication.java`.
-3. Backend will start at `http://localhost:8080`.
-
-### 💻 Frontend (React)
-
-If your frontend folder is built using Vite:
+### 🖥 Backend (Spring Boot)
 
 ```bash
-cd frontend-folder
+cd backend
+mvn clean package
+java -jar target/ecom-proj-0.0.1-SNAPSHOT.jar
+```
+
+Backend will start at 👉 `http://localhost:8080/`
+
+### 🌐 Frontend (React)
+
+```bash
+cd frontend
 npm install
-npm run dev
+npm start
 ```
 
-Frontend will run at `http://localhost:5173` (by default).
+Frontend runs at 👉 `http://localhost:3000/`
+
+> ⚡ When you build for production:
+> Run `npm run build` and copy the contents of the `build/` folder into your backend’s `src/main/resources/static/` directory, then rebuild your `.jar`.
 
 ---
 
-## 🧠 Future Enhancements
+## 🌍 Unified Deployment (Single JAR)
 
-* Implement user authentication and authorization
-* Add order management system
-* Integrate payment gateway
-* Improve UI and cart features
+After building the frontend:
 
----
-
-## 👨‍💻 Author
-
-**Vishnu Vardhan**
-Full Stack Java Developer | Spring Boot | React | REST APIs
-
----
-
+```bash
+npm run build
 ```
 
+Copy the `build` folder contents to:
+
+```
+backend/src/main/resources/static/
+```
+
+Then rebuild:
+
+```bash
+cd backend
+mvn clean package
+java -jar target/ecom-proj-0.0.1-SNAPSHOT.jar
+```
+
+Now the complete app (frontend + backend) runs on:
+👉 `http://localhost:8080/`
+
 ---
 
-Would you like me to include **Postman collection (sample JSON)** for all your API endpoints too, so you can import and test them directly?
-```
+## 📦 Postman Collection
+
+The **Postman API collection file** (`ecom-proj.postman_collection.json`) is included in this repository.
+You can import it into Postman to test all endpoints directly.
+
+---
+
+## 📸 Screenshots
+
+**
+
+---
+
+## 💡 Author
+
+👤 **Vishnu Vardhan**
+📧 *http://linkedin.com/in/vishnu-bachala*
+🧠 *Java | SQL | Spring Boot | React *
+
+---
+
+
